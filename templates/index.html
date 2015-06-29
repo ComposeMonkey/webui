@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html><head>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+</head>
+<body>
+<h2>Compose Monkey</h2>
+{% for link in links %}
+<div style="border: 1px solid; width:300px; margin-left: 10px; padding-left: 5px">
+    <h3>{{link[1]}}</h3>
+     <form action="/" method="POST">
+        <input type="text" name="proxy" value="{{link[0]}}" hidden>
+        <input type="radio" name="behavior" value="blackout"> Blackout
+        <br>
+        <input type="radio" name="behavior" value="dummy"> Dummy
+        <br>
+        <input type="radio" name="behavior" value="error"> Error
+        <br>
+        <input type="radio" name="behavior" value="hang"> Hang
+        <br>
+        <input type="radio" name="behavior" value="delay"> Delay
+        <br>
+         If chosen Delay, secs: <input type="number" name="sleep" value="0" style="width: 50px">
+        <br> <br>
+        <input type="submit" value="Submit">
+        <br>
+    </form>
+</div>
+<br>
+{% endfor %}
+
+</body>
+</html>
