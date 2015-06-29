@@ -11,7 +11,7 @@ def get_current(proxy):
 
 def change_current(proxy, behavior, **optns):
     requests.put('http://{0}:2020/behavior'.format(proxy),
-                 data=json.dumps(**optns))
+                 data=json.dumps(optns))
 
 @app.route("/", methods=['GET', 'POST'])
 def flash():
