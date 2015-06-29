@@ -1,14 +1,17 @@
 import os
 import re
 
+import json
+import requests
 from flask import Flask, request, render_template, make_response
 app = Flask(__name__)
 
 def get_current(proxy):
-    pass
+    return requests.get('http://{0}:2020/behavior'.format(proxy)).json()['behavior']
 
 def change_current(proxy, behavior, **optns):
-    print proxy, behavior, optns
+    requests.put('http://{0}:2020/behavior'.format(proxy),
+                 data=json.dumps(**optns))
 
 @app.route("/", methods=['GET', 'POST'])
 def flash():
