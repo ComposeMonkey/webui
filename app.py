@@ -9,7 +9,7 @@ app = Flask(__name__)
 def get_current(proxy):
     return requests.get('http://{0}:2020/behavior'.format(proxy)).json()['behavior']
 
-def change_current(proxy, behavior, **optns):
+def change_current(proxy, **optns):
     requests.put('http://{0}:2020/behavior'.format(proxy),
                  data=json.dumps(optns))
 
@@ -17,9 +17,8 @@ def change_current(proxy, behavior, **optns):
 def flash():
     if request.method == 'POST':
         req = request.form.to_dict()
-        behavior = req.pop('behavior')
         proxy = req.pop('proxy')
-        change_current(proxy, behavior, **req)
+        change_current(proxy, **req)
 
     links = os.environ.get('links', '').split(',')
     links = [(l,
