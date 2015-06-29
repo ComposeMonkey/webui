@@ -7,6 +7,7 @@
 {% for link in links %}
 <div style="border: 1px solid; width:300px; margin-left: 10px; padding-left: 5px">
     <h3>{{link[1]}}</h3>
+    <br><h5>Current Behavior: <b>{{link[2]}}</b></h5>
      <form action="/" method="POST">
         <input type="text" name="proxy" value="{{link[0]}}" hidden>
         <input type="radio" name="behavior" value="blackout"> Blackout
